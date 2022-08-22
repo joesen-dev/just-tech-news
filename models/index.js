@@ -23,15 +23,17 @@ User.belongsToMany(Post, {
   foreignKey: "user_id",
 });
 
+/* // ? through table
+=======================================*/
 // many-to-many relationship
 Post.belongsToMany(User, {
   through: Vote,
   as: "voted_posts",
   foreignKey: "post_id",
 });
+/* ====================================
+ */
 
-/* // ? through table
-=======================================*/
 Vote.belongsTo(User, {
   foreignKey: "user_id",
 });
@@ -39,8 +41,7 @@ Vote.belongsTo(User, {
 Vote.belongsTo(Post, {
   foreignKey: "post_id",
 });
-/* ====================================
- */
+
 User.hasMany(Vote, {
   foreignKey: "user_id",
 });
